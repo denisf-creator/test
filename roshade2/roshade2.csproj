@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+
+		<!-- Сжимает .exe в 2.5 раза и прячет все .dll (D3DCompiler, wpfgfx и др.) внутрь одного .exe файла! -->
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+		<DebugType>none</DebugType>
+		<ApplicationIcon>log4o.ico</ApplicationIcon>
+		<AssemblyTitle>RoShade</AssemblyTitle>
+	</PropertyGroup>
+
+	<!-- Намертво вшивает все картинки из папки Assets прямо в бинарный код .exe -->
+	<ItemGroup>
+		<None Remove="Assets\**\*.*" />
+		<Resource Remove="Assets\**\*.*" />
+		<EmbeddedResource Include="Assets\**\*.*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="log4o.ico" />
+	</ItemGroup>
+
+</Project>
